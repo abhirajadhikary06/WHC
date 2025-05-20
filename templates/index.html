@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NetPulse</title>
-    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg', _external=True) }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}?v=1" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.svg') }}?v=1" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
