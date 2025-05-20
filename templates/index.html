@@ -1,0 +1,58 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Website Health Checker</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+      <div class="container">
+          <h1>Website Health Checker</h1>
+          <form method="POST" action="/" id="urlForm">
+              <input type="text" name="url" placeholder="Enter website URL (e.g., example.com)" required>
+              <button type="submit">Check Website</button>
+          </form>
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  {% for category, message in messages %}
+                      <p class="{{ category }}">{{ message }}</p>
+                  {% endfor %}
+              {% endif %}
+          {% endwith %}
+
+          <h2>Recent Checks</h2>
+          {% if checks %}
+              <table>
+                  <tr>
+                      <th>URL</th>
+                      <th>Status</th>
+                      <th>Response Time (ms)</th>
+                      <th>Checked At</th>
+                      <th>Error</th>
+                  </tr>
+                  {% for check in checks %}
+                      <tr>
+                          <td>{{ check.url }}</td>
+                          <td>{{ check.status_message }} ({{ check.status_code or 'N/A' }})</td>
+                          <td>{{ check.response_time_ms | round(2) if check.response_time_ms else 'N/A' }}</td>
+                          <td>{{ check.checked_at }}</td>
+                          <td>{{ check.error_message or 'None' }}</td>
+                      </tr>
+                  {% endfor %}
+              </table>
+          {% else %}
+              <p>No checks yet.</p>
+          {% endif %}
+      </div>
+      <script>
+          // Reset form after submission to prevent resubmission
+          document.getElementById('urlForm').addEventListener('submit', function() {
+              setTimeout(() => {
+                  this.reset();
+              }, 100);
+          });
+      </script>
+  </body>
+  </html>
