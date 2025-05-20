@@ -4,10 +4,9 @@ import os
 from etl import check_website
 from db import get_db_connection, fetch_recent_checks
 
-load_dotenv()
-
+SECRET_KEY="9b8f4e2a1c7d3f6e0b2a8c5d4e1f7a9b3c2d8e6f"
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', 'your-secret-key')
+app.secret_key = SECRET_KEY
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

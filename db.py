@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 import pytz
 
-load_dotenv()
+DATABSE_URL = "postgresql://neondb_owner:npg_jeo6KPxV4UED@ep-silent-poetry-a1ujigrh-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
 
 def get_db_connection():
     try:
