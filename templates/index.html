@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Health Checker</title>
+    <title>NetPulse</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="navbar">
         <a href="/" class="logo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#00ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
             </svg>
-            WebHealth
+            NetPulse
         </a>
         
         <div class="nav-links">
-            <a href="/documentation">Readme</a>
-            <a href="/blog">Blog</a>
-            <a href="/community">Community</a>
+            <a href="https://github.com/abhirajadhikary06/WHC/blob/main/README.md">Readme.md</a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status">Blog</a>
+            <a href="/team">Builders</a>
         </div>
         
         <div class="actions">
@@ -28,7 +29,14 @@
                 </svg>
                 GitHub
             </a>
-            <a href="/get-started" class="btn btn-primary">Get started</a>
+            <a href="https://openlaunch.org" class="btn btn-outline">
+                <!-- Open Launch Logo SVG: Bold Doughnut O (center not filled) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="none" style="vertical-align: -0.125em; margin-right: 0.25rem;">
+                    <circle cx="16" cy="18" r="12" stroke="currentColor" stroke-width="6" fill="none"/>
+                    <circle cx="16" cy="16" r="7" fill="none"/>
+                </svg>
+                Open Launch
+            </a>
         </div>
     </div>
 
@@ -38,10 +46,10 @@
                 <div class="dot-bg"></div>
                 <div class="dot"></div>
             </div>
-            <span>LATEST STABLE VERSION:</span>
-            <span class="version">v1.0.0</span>
+            <span style="font-size: 0.85em; color: #888; font-weight: bold;">WEBPAGE VERSION:</span>
+            <span style="font-size: 0.85em;" class="version">v1.0.0</span>
         </div>
-        <h1>Website Health Checker</h1>
+        <h1>Website Status Checker</h1>
         <p class="subtitle">Empowering developers with real-time website status monitoring that simplifies troubleshooting of your web applications.</p>
     </div>
 
@@ -116,6 +124,26 @@
             setTimeout(() => {
                 this.reset();
             }, 100);
+        });
+        
+        // Auto-dismiss message alerts after a few seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = document.querySelectorAll('.message');
+            
+            if (messages.length > 0) {
+                messages.forEach(message => {
+                    // Add fade-out class for smooth transition
+                    setTimeout(() => {
+                        message.style.opacity = '0';
+                        message.style.transition = 'opacity 0.5s ease';
+                    }, 3000); // Wait 3 seconds before starting fade
+                    
+                    // Remove from DOM after fade completes
+                    setTimeout(() => {
+                        message.remove();
+                    }, 3500); // 3000ms wait + 500ms for fade transition
+                });
+            }
         });
     </script>
 </body>

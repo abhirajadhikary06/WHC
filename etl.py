@@ -52,15 +52,14 @@ def check_website(url):
     cur = conn.cursor()
     cur.execute("""
         INSERT INTO website_checks_log (
-            url, status_code, status_message, response_time_ms, checked_at, error_message
-        ) VALUES (%s, %s, %s, %s, %s, %s)
+            url, status_code, status_message, response_time_ms, checked_at
+        ) VALUES (%s, %s, %s, %s, %s)
     """, (
         result['url'],
         result['status_code'],
         result['status_message'],
         result['response_time_ms'],
         result['checked_at'],
-        result['error_message']
     ))
     conn.commit()
     cur.close()
