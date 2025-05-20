@@ -1,4 +1,4 @@
-# NetPulse
+# <i class="fas fa-heartbeat" style="color: #00ff00;"></i> NetPulse
 
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Flask](https://img.shields.io/badge/flask-2.3.3-green)
