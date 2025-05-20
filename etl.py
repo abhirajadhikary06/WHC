@@ -18,11 +18,9 @@ def check_website(url):
         response = requests.get(url, timeout=5)
         status_code = response.status_code
         response_time = response.elapsed.total_seconds() * 1000  # Convert to ms
-        error_message = None
     except requests.RequestException as e:
         status_code = None
         response_time = None
-        error_message = str(e)
 
     # TRANSFORM
     if status_code:
@@ -47,7 +45,6 @@ def check_website(url):
         'status_message': status_message,
         'response_time_ms': response_time,
         'checked_at': checked_at,
-        'error_message': error_message
     }
 
     # LOAD
