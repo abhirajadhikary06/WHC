@@ -26,7 +26,7 @@ def init_db():
             status_message VARCHAR(100),
             response_time_ms NUMERIC(10, 2),
             checked_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-            error_message TEXT
+            fix VARCHAR(50),
         );
     """)
     conn.commit()
@@ -36,7 +36,7 @@ def init_db():
 def fetch_recent_checks(limit=10):
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("SELECT id, url, status_code, status_message, response_time_ms, checked_at, error_message FROM website_checks_log ORDER BY checked_at DESC LIMIT %s", (limit,))
+    cur.execute("SELECT id, url, status_code, status_message, response_time_ms, checked_at, fix FROM website_checks_log ORDER BY checked_at DESC LIMIT %s", (limit,))
     checks = cur.fetchall()
     # Convert checked_at to IST and format as "YYYY-MM-DD HH:MM:SS"
     ist = pytz.timezone('Asia/Kolkata')
