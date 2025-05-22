@@ -30,6 +30,7 @@
             align-items: center;
             padding: 1rem 2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
         }
         
         .logo {
@@ -325,3 +326,26 @@
                 overflow-x: auto;
             }
         }
+
+        #announcement-strip {
+        width: 100%;
+        background-color: #282828;
+        color: #8ef48e;
+        text-align: center;
+        padding: 2px 0;
+        font-size: 14px;
+        font-family: sans-serif;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        border-bottom: 1px solid #222;
+        }
+
+        #announcement-strip a {
+        color: rgb(255, 193, 7);
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 5px;
+        }
+
